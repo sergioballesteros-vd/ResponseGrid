@@ -2472,6 +2472,19 @@ export interface components {
             /** @example Nuevo Nombre */
             name?: string;
         };
+        UpdateProfileResponseDto: {
+            /** @description User UUID */
+            id: string;
+            /** @example user@example.com */
+            email: string;
+            /** @example Jane Doe */
+            name: string;
+            /**
+             * @description Teléfono actualizado, null si no hay
+             * @example +58 412 555 0101
+             */
+            phone: string | null;
+        };
         GrantListItemDto: {
             /** Format: uuid */
             id: string;
@@ -5229,7 +5242,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MeResponseDto"];
+                    "application/json": components["schemas"]["UpdateProfileResponseDto"];
                 };
             };
             /** @description Token inválido o ausente */

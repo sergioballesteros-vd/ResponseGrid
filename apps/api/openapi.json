@@ -131,7 +131,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MeResponseDto"
+                  "$ref": "#/components/schemas/UpdateProfileResponseDto"
                 }
               }
             }
@@ -7922,6 +7922,35 @@
             "example": "Nuevo Nombre"
           }
         }
+      },
+      "UpdateProfileResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "User UUID"
+          },
+          "email": {
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "Jane Doe"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+58 412 555 0101",
+            "nullable": true,
+            "description": "Teléfono actualizado, null si no hay"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "name",
+          "phone"
+        ]
       },
       "GrantListItemDto": {
         "type": "object",
