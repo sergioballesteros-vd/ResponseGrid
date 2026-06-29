@@ -105,6 +105,25 @@ export class MeResponseDto {
   grants!: MeGrantDto[];
 }
 
+export class UpdateProfileResponseDto {
+  @ApiProperty({ description: 'User UUID' })
+  id!: string;
+
+  @ApiProperty({ example: 'user@example.com' })
+  email!: string;
+
+  @ApiProperty({ example: 'Jane Doe' })
+  name!: string;
+
+  @ApiProperty({
+    example: '+58 412 555 0101',
+    nullable: true,
+    type: String,
+    description: 'Teléfono actualizado, null si no hay',
+  })
+  phone!: string | null;
+}
+
 export class UpdateProfileDto {
   @ApiProperty({
     example: '+58 412 555 0101',

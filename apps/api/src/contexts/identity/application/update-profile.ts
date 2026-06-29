@@ -1,6 +1,7 @@
 import { UserRepository } from '../domain/ports/user.repository';
 import { UserId } from '../domain/user-id';
 import { User } from '../domain/user';
+import { UserNotFoundError } from '../domain/user-not-found.error';
 
 export interface UpdateProfileCommand {
   userId: string;
@@ -20,7 +21,7 @@ export class UpdateProfile {
 
   async execute(cmd: UpdateProfileCommand): Promise<UpdateProfileResult> {
     const user = await this.userRepo.findById(UserId.fromString(cmd.userId));
-    if (!user) throw new Error('User not found');
+    if (!user) throw new UserNotFoundError(cmd.userId);
 
     const snap = user.toSnapshot();
     const updated = User.fromSnapshot({

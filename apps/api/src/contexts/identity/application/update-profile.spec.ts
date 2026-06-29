@@ -1,4 +1,5 @@
 import { UpdateProfile } from './update-profile';
+import { UserNotFoundError } from '../domain/user-not-found.error';
 import { InMemoryUserRepository } from '../infrastructure/in-memory-user.repository';
 import { User } from '../domain/user';
 import { UserId } from '../domain/user-id';
@@ -63,6 +64,6 @@ describe('UpdateProfile', () => {
         userId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
         phone: '+1 555 0101',
       }),
-    ).rejects.toThrow('User not found');
+    ).rejects.toThrow(UserNotFoundError);
   });
 });
